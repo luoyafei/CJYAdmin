@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -229,10 +231,18 @@
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
-
+    <!-- <script src="js/plugins/morris/raphael.min.js"></script> -->
+    <!-- <script src="js/plugins/morris/morris.min.js"></script> -->
+    <!-- <script src="js/plugins/morris/morris-data.js"></script> -->
+    
+	<script type="text/javascript">
+		$(document).ready(function() {
+			alert(1);
+			$.post('Fetch!justDoIt.action', {}, function(data, textStatus) {
+				alert(JSON.stringify(data));
+			}, 'json');
+		});
+	</script>
 </body>
 
 </html>

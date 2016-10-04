@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="User" type="com.cyjadmin.bean.User"/>
+		<!--<typeAlias alias="ChatMessage" type="com.socketchat.bean.ChatMessage"/>
+		<typeAlias alias="FriendTab" type="com.socketchat.bean.FriendTab"/> -->
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/cyjadmin/bean/UserMapper.xml"/>
+		<!-- 
+		<mapper resource="com/socketchat/bean/ChatMessageMapper.xml"/>
+		<mapper resource="com/socketchat/bean/FriendTabMapper.xml"/> -->
+	</mappers>
+</configuration>
