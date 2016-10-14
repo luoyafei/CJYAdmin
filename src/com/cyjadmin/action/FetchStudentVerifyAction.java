@@ -2,7 +2,6 @@ package com.cyjadmin.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -47,7 +46,6 @@ public class FetchStudentVerifyAction extends ActionSupport {
 	public void justDoIt() {
 		JsonObject jo = new JsonObject();
 		HttpServletResponse response = ServletActionContext.getResponse();
-//		HttpServletRequest request = ServletActionContext.getRequest();
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = null;
 

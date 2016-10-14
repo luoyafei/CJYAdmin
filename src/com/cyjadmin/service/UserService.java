@@ -28,4 +28,12 @@ public interface UserService {
 	 * @return
 	 */
 	public int getAllVerifyUsersCounts(String isVerify);
+
+	/**
+	 * 用来更新用户的认证情况
+	 * @param userId
+	 * @param pv
+	 * @return
+	 */
+	public boolean updateUserVerify(String userId, String pv);
 }

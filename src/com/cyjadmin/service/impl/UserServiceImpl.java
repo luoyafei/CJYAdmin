@@ -42,4 +42,10 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return ud.getAllVerifyUsersCounts(isVerify);
 	}
+
+	@Override
+	public boolean updateUserVerify(String userId, String pv) {
+		// TODO Auto-generated method stub
+		return ud.updateUserVerify(userId, pv);
+	}
 }

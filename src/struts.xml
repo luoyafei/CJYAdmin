@@ -13,6 +13,16 @@
 	
 	<package name="default" extends="struts-default" namespace="/"> 
     	<action name="Fetch" class="fetchStudentVerifyAction" />
+    	<action name="OperateVerify" class="operateVerifyAction" />
+    	
+    	<action name="login" class="loginAction">
+			<result name="success">/index.jsp</result>
+			<result name="input">/CYJ_login.html</result>
+		</action>
+		<action name="signOut" class="signOut">
+			<result name="success">/CYJ_login.html</result>
+		</action>
+    	
 		<!-- <action name="SignIn" class="signInAction" />		
 		<action name="getAllHeadPicture" class="getAllHeadPictureAction" />
 		<action name="dealChoiceHead" class="dealChoiceHeadAction">

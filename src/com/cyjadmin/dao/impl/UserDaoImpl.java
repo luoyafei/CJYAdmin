@@ -51,5 +51,13 @@ public class UserDaoImpl implements UserDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("User.getAllVerifyUsersCounts", isVerify);
 	}
-
+	
+	@Override
+	public boolean updateUserVerify(String userId, String pv) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userId", userId);
+		map.put("isVerify", pv);
+		return sqlSession.update("User.updateUserVerify", map)==1;
+	}
 }

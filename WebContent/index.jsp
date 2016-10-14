@@ -148,7 +148,7 @@
                         </li>
                         <li class="divider"></li> -->
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i>退出登录</a>
+                            <a href="signOut.action"><i class="fa fa-fw fa-power-off"></i>退出登录</a>
                         </li>
                     </ul>
                 </li>
@@ -203,23 +203,24 @@
             <div class="container-fluid">
                 <div class="row" id="row_flag">
                 
-                    <div class="col-lg-3 col-md-6 identify_clone_span">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <img src="" alt="正在玩命加载中" class="img-rounded identify_picture" style="width:100%; height: 100%;" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-footer">
-                                <a class="operate_pass" href=""><span class="pull-left"><i class="glyphicon glyphicon-ok"></i>通过</span></a>
-                                <a class="operate_unpass" href=""><span class="pull-right" style="color: red;"><i class="glyphicon glyphicon-remove"></i>不合格</span></a>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
+                    <div id="none_clone" style="display: none;">
+                    	<div class="col-lg-3 col-md-6 identify_clone_span">
+	                        <div class="panel panel-primary">
+	                            <div class="panel-heading">
+	                                <div class="row">
+	                                    <div class="col-xs-12">
+	                                        <img alt="正在玩命加载中" class="img-rounded identify_picture" style="width:100%; height: 100%;" />
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="panel-footer">
+	                                <a class="operate_pass" href=""><span class="pull-left"><i class="glyphicon glyphicon-ok"></i>通过</span></a>
+	                                <a class="operate_unpass" href=""><span class="pull-right" style="color: red;"><i class="glyphicon glyphicon-remove"></i>不合格</span></a>
+	                                <div class="clearfix"></div>
+	                            </div>
+	                        </div>
+	                    </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -237,9 +238,24 @@
     
 	<script type="text/javascript">
 		$(document).ready(function() {
+			
 			$.post('Fetch!justDoIt.action', {}, function(data, textStatus) {
-				alert(JSON.stringify(data));
-				
+				if(textStatus == "success" && data.need) {
+					var verifyUsers = data.verifyUsers;
+					for(var i = 0; i < verifyUsers.length; i++) {
+						$("#row_flag").append($(".identify_clone_span").clone().attr("class", "col-lg-3 col-md-6 cloneItemAll"));
+					}
+					$("#none_clone").remove();
+					$(".identify_picture").each(function(index){
+						$(this).attr("src", data.verifyUsers[index].userRealPhoto);
+					});
+					$(".operate_pass").each(function(index){
+ 						$(this).attr("href", "OperateVerify!doPass.action?mark=" + data.verifyUsers[index].userId);
+					});
+					$(".operate_unpass").each(function(index){
+						$(this).attr("href", "OperateVerify!doUnpass.action?mark=" + data.verifyUsers[index].userId);
+					});
+				}
 			}, 'json');
 		});
 	</script>

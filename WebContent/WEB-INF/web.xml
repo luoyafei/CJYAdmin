@@ -17,14 +17,14 @@
 		<param-value>classpath:beans.xml</param-value>
 	</context-param>
 
-	<!-- <filter>
+	<filter>
 		<filter-name>CheckLoginFilter</filter-name>
-		<filter-class>com.socketchat.filter.CheckLoginFilter</filter-class>
+		<filter-class>com.cyjadmin.filter.CheckLoginFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>CheckLoginFilter</filter-name>
-		<url-pattern>/pages/*</url-pattern>
-	</filter-mapping> -->
+		<url-pattern>/index.jsp</url-pattern>
+	</filter-mapping>
 
 	<filter>
 		<filter-name>struts2</filter-name>
