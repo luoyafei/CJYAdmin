@@ -2,6 +2,7 @@ package com.cyjadmin.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -22,13 +23,25 @@ import com.opensymphony.xwork2.ActionSupport;
 @Scope("prototype")
 public class FetchStudentVerifyAction extends ActionSupport {
 	
+	private static final String WAITING_IDENTIFY = "3";//等待审核的状态
+	private static final int LENTH = 100;
+	
 	private UserService us;
+	private String start;
+	
 	public UserService getUs() {
 		return us;
 	}
 	@Resource(name="us")
 	public void setUs(UserService us) {
 		this.us = us;
+	}
+	
+	public String getStart() {
+		return start;
+	}
+	public void setStart(String start) {
+		this.start = start;
 	}
 	
 	public void justDoIt() {
@@ -41,9 +54,27 @@ public class FetchStudentVerifyAction extends ActionSupport {
 		try {
 			out = response.getWriter();
 		} catch(IOException e) {}
-		List<User> users = us.getAllUsers(0, 10);
-		Gson gson = new Gson();
-		jo.add("users", gson.toJsonTree(users));
+		//获取正在等待审核的用户的数量
+		int counts = us.getAllVerifyUsersCounts(WAITING_IDENTIFY);
+		boolean needSelect = true;;
+		if(counts == 0) {
+			needSelect = false;
+		}
+		if(start == null || start.trim().hashCode() == 0) {
+			start = "0";
+		} else {
+			try {
+				Integer.parseInt(start);
+			} catch(NumberFormatException e) {
+				start = "0";
+			}
+		}
+		if(needSelect) {
+			List<User> verifyUsers = us.getAllVerifyUsers(WAITING_IDENTIFY, Integer.parseInt(start), LENTH);
+			Gson gson = new Gson();
+			jo.add("verifyUsers", gson.toJsonTree(verifyUsers));
+		}
+		jo.addProperty("need", needSelect);
 		
 		out.print(jo.toString());
 		out.flush();

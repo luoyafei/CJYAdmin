@@ -48,7 +48,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">创业家后台管理</a>
+                <a class="navbar-brand" href="index.jsp">创业家后台管理</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -157,7 +157,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;学生证验证</a>
+                        <a href="index.jsp"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;学生证验证</a>
                     </li>
                     
                     <!-- 
@@ -201,20 +201,20 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-                <div class="row">
+                <div class="row" id="row_flag">
                 
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-6 identify_clone_span">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <img src="/CYJAdmin/img/1.png" alt="..." class="img-rounded" style="width:100%; height: 100%;" />
+                                        <img src="" alt="正在玩命加载中" class="img-rounded identify_picture" style="width:100%; height: 100%;" />
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-footer">
-                                <a href=""><span class="pull-left"><i class="glyphicon glyphicon-ok"></i>通过</span></a>
-                                <a href=""><span class="pull-right" style="color: red;"><i class="glyphicon glyphicon-remove"></i>不合格</span></a>
+                                <a class="operate_pass" href=""><span class="pull-left"><i class="glyphicon glyphicon-ok"></i>通过</span></a>
+                                <a class="operate_unpass" href=""><span class="pull-right" style="color: red;"><i class="glyphicon glyphicon-remove"></i>不合格</span></a>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
@@ -237,9 +237,9 @@
     
 	<script type="text/javascript">
 		$(document).ready(function() {
-			alert(1);
 			$.post('Fetch!justDoIt.action', {}, function(data, textStatus) {
 				alert(JSON.stringify(data));
+				
 			}, 'json');
 		});
 	</script>

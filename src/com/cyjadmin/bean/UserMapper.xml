@@ -9,6 +9,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from user u limit #{start},#{maxSize}
 	</select>
 	
+	<select id="getAllVerifyUsers" resultType="User" parameterType="hashmap">
+		select * from user u where u.isVerify = #{isVerify} limit #{start},#{length}
+	</select>
+	
+	<select id="getAllVerifyUsersCounts" parameterType="string" resultType="_int">
+		select count(*) from user u where u.isVerify = #{isVerify}
+	</select>
+	
 	<!-- <update id="updateUser" parameterType="User">
 		update user set user.nickName = #{nickName}, user.password = #{password}, user.userPicture = #{userPicture} where user.userId = #{userId}
 	</update> -->
